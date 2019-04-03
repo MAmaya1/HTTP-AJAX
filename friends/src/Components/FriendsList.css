@@ -1,0 +1,13 @@
+.friends-list {
+    background: white;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.friend-card {
+    box-shadow: 0 -1px 0 lightblue, 0 0 2px lightblue,
+    0 2px 4px lightblue;
+    padding: 3px 15px;
+    margin: 10px 0;
+}

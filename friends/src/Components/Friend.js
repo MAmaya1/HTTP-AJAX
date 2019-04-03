@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './FriendsList.css';
+
 function Friend(props) {
     return(
         <div className="friend-card">
