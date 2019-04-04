@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 class EditFriend extends Component {
     constructor(props) {
-        console.log(props)
         super(props);
         this.state = {
             updatedFriend: {
@@ -26,6 +25,13 @@ class EditFriend extends Component {
         event.preventDefault();
         const id = this.props.match.params.id;
         this.props.updateFriend(id, this.state.updatedFriend)
+        this.setState({
+            item: {
+                name: '',
+                age: '',
+                email: ''
+            }
+        })
     }
  
     render() {
