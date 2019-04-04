@@ -1,37 +1,47 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Route} from 'react-router-dom';
 
-import Friend from './Friend';
+import FriendCard from './FriendCard';
 import NewFriendForm from './NewFriendForm';
+import EditFriend from './EditFriend';
 
 class FriendsList extends Component {
     constructor() {
         super();
         this.state = {
-            friendsList: [],
-            successMessage: 'New friend added!',
-
+            friendsList: []
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:5000/friends')
-        .then(res => {
-            this.setState({friendsList: res.data})
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(res => {
+                this.setState({friendsList: res.data})
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     postNewFriend = friend => {
         axios.post('http://localhost:5000/friends', friend)
-        .then(res => {
-            this.setState({friendsList: res.data})
-        })
-        .catch(err => {
-            console.log(err);
-        })
+            .then(res => {
+                this.setState({friendsList: res.data})
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    updateFriend = (id, updatedFriend) => {
+            axios.put(`http://localhost:5000/friends/${id}`, updatedFriend)
+            .then(res => {
+                this.setState({friendsList: res.data})
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -39,12 +49,23 @@ class FriendsList extends Component {
             <div className="friends-list">
                 <h1>Friends List</h1>
                 {this.state.friendsList.map(friend => (
-                    <Friend 
-                        key={friend.id}
-                        name={friend.name}
-                        age={friend.age}
-                        email={friend.email}
-                    />
+                    <div className="friend-card" key={friend.id}>
+                        <Route
+                            exact path="/"
+                            render={() =>
+                                <FriendCard
+                                    name={friend.name}
+                                    age={friend.age}
+                                    email={friend.email}
+                                />}
+                        />
+                        <Route 
+                            path="/edit-friend"
+                            render={() => <EditFriend 
+                                id={friend.id}
+                                updateFriend={this.updateFriend}/>}
+                        />
+                    </div>
                 ))}
                 <NewFriendForm postNewFriend={this.postNewFriend}/>
             </div>
