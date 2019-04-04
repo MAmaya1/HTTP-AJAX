@@ -2,17 +2,30 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import Friend from './Friend';
+import NewFriendForm from './NewFriendForm';
 
 class FriendsList extends Component {
     constructor() {
         super();
         this.state = {
-            friendsList: []
+            friendsList: [],
+            successMessage: 'New friend added!',
+
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:5000/friends')
+        .then(res => {
+            this.setState({friendsList: res.data})
+        })
+        .catch(err => {
+            console.log(err);
+        })
+    }
+
+    postNewFriend = friend => {
+        axios.post('http://localhost:5000/friends', friend)
         .then(res => {
             this.setState({friendsList: res.data})
         })
@@ -33,6 +46,7 @@ class FriendsList extends Component {
                         email={friend.email}
                     />
                 ))}
+                <NewFriendForm postNewFriend={this.postNewFriend}/>
             </div>
         )
     }
