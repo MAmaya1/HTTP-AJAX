@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
 class NewFriendForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             newFriend: {
                 name: '',
