@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class EditFriend extends Component {
     constructor(props) {
@@ -27,8 +26,14 @@ class EditFriend extends Component {
         console.log(this.props.id);
         this.props.updateFriend(this.props.id, this.state.updatedFriend)
     }
+
+    deleteFriend = event => {
+        event.preventDefault();
+        this.props.deleteFriend(this.props.id)
+    }
  
     render() {
+        console.log(this.props)
         return (
             <form>
                 <h3>Update Friend Info</h3>
@@ -48,6 +53,7 @@ class EditFriend extends Component {
                     onChange={this.updateValue}
                 />
                 <button onClick={this.updateFriend}>Save</button>
+                <button onClick={this.deleteFriend}>Delete</button> {/* Delete friend can go on main friend card instead */}
             </form>
         )
     }
