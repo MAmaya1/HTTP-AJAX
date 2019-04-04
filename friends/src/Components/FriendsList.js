@@ -44,6 +44,16 @@ class FriendsList extends Component {
             })
     }
 
+    deleteFriend = id => {
+        axios.delete(`http://localhost:5000/friends/${id}`)
+            .then(res => {
+                this.setState({friendsList: res.data})
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     render() {
         return (
             <div className="friends-list">
@@ -54,13 +64,15 @@ class FriendsList extends Component {
                             exact path="/"
                             render={() =>
                                 <FriendCard
+                                    id={friend.id}
                                     name={friend.name}
                                     age={friend.age}
                                     email={friend.email}
+                                    deleteFriend={this.deleteFriend}
                                 />}
                         />
                         <Route 
-                            path="/edit-friend"
+                            path="/edit-friend/:id"
                             render={() => <EditFriend 
                                 id={friend.id}
                                 updateFriend={this.updateFriend}/>}
