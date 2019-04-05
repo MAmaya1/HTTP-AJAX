@@ -37,6 +37,7 @@ class EditFriend extends Component {
     render() {
         return (
             <form>
+                {console.log(this.props)}
                 <h3>Update Friend Info</h3>
                 Name: <input
                     type="text"

@@ -30,25 +30,27 @@ class NewFriendForm extends Component {
         return (
             <form>
                 <h2>Add a New Friend</h2>
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Name"
-                    onChange={this.updateValue}
-                />
-                <input
-                    type="text"
-                    name="age"
-                    placeholder="Age"
-                    onChange={this.updateValue}
-                />
-                <input
-                    type="text"
-                    name="email"
-                    placeholder="Email"
-                    onChange={this.updateValue}
-                />
-                <button onClick={this.postNewFriend}>Submit</button>
+                <div className="new-friend-form">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Name"
+                        onChange={this.updateValue}
+                    />
+                    <input
+                        type="text"
+                        name="age"
+                        placeholder="Age"
+                        onChange={this.updateValue}
+                    />
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        onChange={this.updateValue}
+                    />
+                </div>
+                <button className="submit-btn" onClick={this.postNewFriend}>Submit</button>
             </form>
         )
     }

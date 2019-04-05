@@ -3,14 +3,58 @@
 }
 
 .friend-card {
-    height: 155px;
     box-shadow: 0 -1px 0 lightblue, 0 0 2px lightblue,
     0 2px 4px lightblue;
-    padding: 3px 15px;
+    padding: 5px 15px;
     margin: 10px 0;
+    font-size: 1.2rem;
 }
 
-.friend-wrapper {
-    height: 100%;
-    width: 100%;
+.friend-card .buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    height: 35px;
+    width: 80px;
+    margin-bottom: 5px;
+    background: white;
+    border: 2px solid lightblue;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(233, 250, 255);
+}
+
+.new-friend-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-friend-form input {
+    width: 30%;
+    padding: 7px;
+}
+
+.submit-btn {
+    margin: 20px auto 0 auto;
+}
+
+@media (max-width: 500px) {
+    .new-friend-form {
+        flex-direction: column;
+    }
+
+    .new-friend-form input {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .submit-btn {
+        margin-top: 5px;
+        width: 100%;
+        height: 40px;
+    }
 }
