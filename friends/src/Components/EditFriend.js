@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import './EditFriend.css';
+
 class EditFriend extends Component {
     constructor(props) {
         super(props);
@@ -36,8 +38,7 @@ class EditFriend extends Component {
  
     render() {
         return (
-            <form>
-                {console.log(this.props)}
+            <form className="edit-friend-form">
                 <h3>Update Friend Info</h3>
                 Name: <input
                     type="text"
